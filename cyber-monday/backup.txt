@@ -1,10 +1,10 @@
 # NOTE: For these commands your current working directory should be: 
 # /workspaces/intro-to-kube/cyber-monday
 # TODO: Enter kubectl cp command used to get `log.sh` file into the Pod
-kubectl cp log.sh just-a-pod:/tmp/.
+kubectl cp log.sh nginx-pod:/tmp/.
 # TODO: Enter kubectl exec command used to execute the `log.sh`
-kubectl exec -it just-a-pod -- bash -c "bash /tmp/log.sh" 
+kubectl exec -it nginx-pod -- bash -c "bash /tmp/log.sh" 
 # TODO: Enter kubectl cp command used to copy the log file from inside the
 # Pod to your current working directory
-kubectl exec -it just-a-pod -- bash -c "tail -n 10 /tmp/foo.log"
-kubectl cp just-a-pod:/tmp/foo.log just-a-pod-foo.log
+kubectl exec -it nginx-pod -- bash -c "tail -n 10 /tmp/foo.log"
+kubectl cp nginx-pod:/tmp/foo.log just-a-pod-foo.log
