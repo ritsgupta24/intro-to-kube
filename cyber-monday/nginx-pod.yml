@@ -1,7 +1,9 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: just-a-pod
+  name: nginx-pod
+  labels: 
+    environment: just-a-pod
 spec:
   containers:
     - name: nginx
