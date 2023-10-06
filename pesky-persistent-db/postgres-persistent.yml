@@ -7,7 +7,8 @@ metadata:
     app: postgres
 spec:
   storageClassName: "manual"
-  accessModes: [ "ReadWriteMany" ]
+  accessModes: 
+    - ReadWriteMany
   capacity:
       storage: 5Gi 
   hostPath:
@@ -27,7 +28,8 @@ metadata:
     app: postgres
 spec:
   storageClassName: "manual"
-  accessModes: [ "ReadWriteMany" ] 
+  accessModes: 
+    - ReadWriteMany
   resources:
     requests: 
       storage: 5Gi  
