@@ -4,6 +4,22 @@ metadata:
   name: network-policy-for-namespace-b
   namespace: namespace-b
 spec:
-  # TODO:
-  # Define ingress
-  # Define egress
+  policyTypes: 
+    - Ingress
+    - Egress
+  ingress:
+    - from:  
+      - namespaceSelector: 
+          matchLabels: 
+            user: namespace-b
+        podSelector: 
+          matchLabels: 
+            app: nginx  
+  egress:
+    - to: 
+      - namespaceSelector: 
+          matchLabels: 
+            user: namespace-a
+        podSelector: 
+          matchLabels: 
+            app: nginx   
