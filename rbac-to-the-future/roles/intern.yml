@@ -4,6 +4,9 @@ metadata:
   name: Intern
   namespace: dev
 rules:
+- apiGroups: [""]
+  resources: ["pods", "deployments"]
+  verbs: ["get", "list", "watch"]
 # TODO:
 # target pods with verbs get, watch, list
 ---
@@ -13,7 +16,13 @@ metadata:
   name: InternBinding
   namespace: dev
 subjects:
+- kind: User 
+  name: Jules
+  apiGroup: rbac.authorization.k8s.io
 # TODO: add Jules as target user
 # note: this is case sensitive
 roleRef:
+  kind: Role
+  name: Intern
+  apiGroup: rbac.authorization.k8s.io
 # TODO: add target role to Intern
