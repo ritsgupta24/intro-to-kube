@@ -18,9 +18,7 @@ spec:
   egress:
     - to: 
       - namespaceSelector: 
-          matchLabels: 
-            user: namespace-c
-        podSelector: 
-          matchLabels: 
-            app: postgres   
-        
+          matchExpressions:
+          - key: namespace
+            operator: In 
+            values: ["namespace-b", "namespace-c"]
