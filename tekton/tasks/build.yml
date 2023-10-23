@@ -19,7 +19,7 @@ spec:
         #!bin/bash 
         npm install 
     - name: npm-test 
-      image: node
+      image: node 
       script: | 
         #!/bin/bash
         npm test 

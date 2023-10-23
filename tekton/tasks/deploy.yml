@@ -9,9 +9,25 @@ spec:
     - name: IMAGE
       type: string
   steps:
+    #- name: git-clone
+    #  image: alpine/git
+    #  script: | 
+    #    #!bin/bash 
+    #    git clone $(params.REPO_URL) --depth 1 /workspace/source
+    - name: nginx-deployment
+      image: lachlanevenson/k8s-kubectl 
+      script: | 
+        #!bin/bash 
+        kubectl apply -f /workspace/source/tekton/k8s/nginx-deployment.yml -n=$(params.NAMESPACE)
+    - name: nginx-update 
+      image: lachlanevenson/k8s-kubectl
+      script: | 
+        #!bin/bash 
+        kubectl set image deployment/nginx-deployment nginx=$(params.IMAGE) -n=$(params.NAMESPACE)
+         
     # TODO
     # Add the following steps to your Task:
-    # 1. Clone the repo given the paramters to /workspace/source
+    # 1. Clone the repo given the paramters to /workspace/source: This is not needed. 
     # 2. Run  `kubectl apply -f /workspace/source/tekton/k8s/nginx-deployment.yml`
     #    to the ns specified by the paramsl; use image lachlanevenson/k8s-kubectl
     # 3. Update the image for the deployment by running: `kubectl set image deployment/nginx-deployment nginx=<IMAGE-NAME> -n=<NAMESPACE>`
