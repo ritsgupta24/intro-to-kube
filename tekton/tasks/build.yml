@@ -6,7 +6,23 @@ spec:
   params:
     - name: REPO_URL
       type: string
+      description: The git REPO_URL to clone from 
   steps:
+    - name: git-clone
+      image: alpine/git
+      script: | 
+        #!bin/bash 
+        git clone $(params.REPO_URL) --depth 1 /workspace/source
+    - name: npm-install
+      image: node
+      script: | 
+        #!bin/bash 
+        npm install 
+    - name: npm-test 
+      image: node
+      script: | 
+        #!/bin/bash
+        npm test 
     # TODO
     # Add the following steps to your Task:
     # 1. Clone the github repo from the params into a directory called: /workspace/source
