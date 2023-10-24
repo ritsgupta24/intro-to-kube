@@ -8,15 +8,15 @@ spec:
       type: string
       description: The git REPO_URL to clone from 
   steps:
-    - name: git-clone
+    - name: build-git-clone
       image: alpine/git
       script: | 
-        #!bin/bash 
+        #!/bin/bash 
         git clone $(params.REPO_URL) --depth 1 /workspace/source
     - name: npm-install
       image: node
       script: | 
-        #!bin/bash 
+        #!/bin/bash 
         npm install 
     - name: npm-test 
       image: node 

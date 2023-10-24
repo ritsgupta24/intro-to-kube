@@ -4,16 +4,18 @@ metadata:
   name: deploy
 spec:
   params:
+    - name: REPO_URL 
+      type: string
     - name: NAMESPACE
       type: string
     - name: IMAGE
       type: string
   steps:
-    #- name: git-clone
-    #  image: alpine/git
-    #  script: | 
-    #    #!bin/bash 
-    #    git clone $(params.REPO_URL) --depth 1 /workspace/source
+    - name: deploy-git-clone
+      image: alpine/git
+      script: | 
+        #!bin/bash 
+        git clone $(params.REPO_URL) --depth 1 /workspace/source
     - name: nginx-deployment
       image: lachlanevenson/k8s-kubectl 
       script: | 
