@@ -12,7 +12,7 @@ spec:
       image: alpine/git
       script: | 
         #!/bin/bash 
-        git clone $(params.REPO_URL) --depth 1 /workspace/source
+        git clone $(params.REPO_URL) /workspace/source
     - name: npm-install
       image: node
       script: | 
